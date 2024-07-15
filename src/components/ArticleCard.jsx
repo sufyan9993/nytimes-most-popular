@@ -2,7 +2,6 @@ import { Card, CardActionArea, CardContent, CardMedia, Link, Typography } from '
 import React from 'react'
 
 const ArticleCard = ({ article }) => {
-
     const limitTitleChar = (str) => {
         return str.length > 45 ? str.substring(0, 45) + '...' : str;
     };

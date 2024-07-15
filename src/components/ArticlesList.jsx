@@ -5,11 +5,6 @@ import {
   Container,
   Typography,
   Grid,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Link,
   FormControl,
   InputLabel,
   Select,
@@ -31,13 +26,11 @@ const ArticlesList = () => {
 
   useEffect(() => {
     fetchData(period);
-
   }, [period]);
 
   const handlePeriodChange = (event) => {
     setPeriod(event.target.value);
   };
-
   return (
     <Container >
       <Typography variant="h4" component="h1" gutterBottom sx={{my:'10px', textAlign:'center'}}>
