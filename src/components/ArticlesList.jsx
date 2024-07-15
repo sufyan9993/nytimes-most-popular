@@ -15,14 +15,11 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
+import ArticleCard from './ArticleCard';
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [period, setPeriod] = useState(1);
-
-  const limitTitleChar = (str) => {
-    return str.length > 45 ? str.substring(0, 45) + '...' : str;
-  };
 
   const fetchData = async (period) => {
     const result = await axios(
@@ -62,24 +59,7 @@ const ArticlesList = () => {
       <Grid container spacing={3}>
         {articles.map((article) => (
           <Grid item xs={12} sm={6} md={4} key={article?.id}>
-            <Card>
-              <CardActionArea component={Link} href={article?.url} target="_blank" rel="noopener noreferrer">
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={article?.media[0] && article?.media[0]['media-metadata'][2].url}
-                  alt={article?.title}
-                />
-                <CardContent>
-                  <Typography className='description' gutterBottom variant="h5" component="div">
-                    {limitTitleChar(article.title)}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Published on: {article.published_date}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            <ArticleCard article={article}/>
           </Grid>
         ))}
       </Grid>
